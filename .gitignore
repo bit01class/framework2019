@@ -1,0 +1,16 @@
+.class 
+/.metadata/
+/RemoteSystemsTempFiles/
+/Servers/
+bin/
+target/
+.settings/
+build/
+.jar
+.classpath
+.project
+.jsdtscope
+.prefs
+.component
+.container
+.name
