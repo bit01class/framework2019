@@ -9,7 +9,35 @@
 	</select>
 	
 	<select id="selectOne" parameterClass="int" resultClass="com.bit.struts.model.entity.Struts06Vo">
-	select * from struts06 where num=#value#
+	SELECT * FROM STRUTS06 WHERE NUM=#value#
 	</select>
+	
+	<insert id="insertOne" parameterClass="com.bit.struts.model.entity.Struts06Vo">
+	INSERT INTO STRUTS06 VALUES (STRUTS06_SEQ.NEXTVAL,#name#,#sub#,#content#,SYSDATE)
+	</insert>
 
+	<update id="updateOne" parameterClass="com.bit.struts.model.entity.Struts06Vo">
+	UPDATE STRUTS06 SET SUB=#sub#,CONTENT=#content# WHERE NUM=#num#
+	</update>
+
+	<delete id="deleteOne" parameterClass="int">
+	DELETE FROM STRUTS06 WHERE NUM=#value#
+	</delete>
 </sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

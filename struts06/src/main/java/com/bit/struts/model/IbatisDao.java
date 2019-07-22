@@ -34,6 +34,18 @@ public class IbatisDao {
 	public Struts06Vo listOne(int num) throws SQLException {
 		return (Struts06Vo) sqlMapClient.queryForObject("selectOne",num);
 	}
+
+	public void insertOne(Struts06Vo bean) throws SQLException {
+		sqlMapClient.insert("insertOne",bean);
+	}
+
+	public int updateOne(Struts06Vo bean) throws SQLException {
+		return sqlMapClient.update("updateOne",bean);
+	}
+
+	public int deleteOne(int idx) throws SQLException {
+		return sqlMapClient.delete("deleteOne",idx);
+	}
 }
 
 

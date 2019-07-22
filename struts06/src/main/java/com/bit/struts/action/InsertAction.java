@@ -2,6 +2,7 @@ package com.bit.struts.action;
 
 import org.apache.log4j.Logger;
 
+import com.bit.struts.model.IbatisDao;
 import com.bit.struts.model.Struts06Dao;
 import com.bit.struts.model.entity.Struts06Vo;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,7 +32,7 @@ public class InsertAction extends ActionSupport implements Preparable,ModelDrive
 	@Override
 	public String execute() throws Exception {
 		if(hasErrors())return this.INPUT;
-		Struts06Dao dao=new Struts06Dao();
+		IbatisDao dao=new IbatisDao();
 		dao.insertOne(bean);
 		return this.SUCCESS;
 	}

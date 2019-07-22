@@ -23,6 +23,17 @@
     		<action name="detail" class="com.bit.struts.action.DetailAction">
     			<result name="success">/detail.jsp</result>
     		</action>
+    		
+    		<action name="update" class="com.bit.struts.action.UpdateAction">
+    			<result name="input" type="redirectAction">
+    				<param name="num">${bean.num}</param>
+    				<param name="actionName">detail</param>
+    			</result>
+    			<result name="success" type="redirectAction">list</result>
+    		</action>
+    		<action name="delete" class="com.bit.struts.action.DeleteAction">
+    			<result type="redirectAction">list</result>
+    		</action>
     	</package>
     	
     

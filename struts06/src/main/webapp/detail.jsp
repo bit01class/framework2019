@@ -32,7 +32,7 @@
   <h1>상세페이지</h1>
   <p></p>
 </div>
-<form action="">
+<form action="update.bit">
 	<div class="form-group">
 	  <label for="num">글번호</label>
 	  <input type="text" value="${bean.num }" class="form-control" name="num" id="num" readonly="readonly"/>
@@ -56,7 +56,7 @@
 	<button type="reset" class="btn btn-default">취소</button>
 </form>
 	<button type="button" class="btn btn-primary">수정</button>
-	<a href="delete.bit?num=" role="button" class="btn btn-danger">삭제</a>
+	<a href="delete.bit?idx=${bean.num }" role="button" class="btn btn-danger">삭제</a>
 </body>
 </html>
 
