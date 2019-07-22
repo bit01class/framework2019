@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+           PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+           "http://ibatis.apache.org/dtd/sql-map-2.dtd">  
+
+<sqlMap>
+	<select id="selectAll" resultClass="com.bit.struts.model.entity.Struts06Vo">
+	SELECT NUM,NAME,SUB,NALJA FROM STRUTS06 ORDER BY NUM DESC
+	</select>
+
+</sqlMap>
