@@ -76,6 +76,34 @@ public class Struts06Dao {
 		
 	}
 
+	public Struts06Vo listOne(int num) {
+		Struts06Vo bean=new Struts06Vo();
+		String sql="SELECT * FROM STRUTS06 WHERE NUM=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setNum(rs.getInt("num"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setSub(rs.getString("sub"));
+				bean.setContent(rs.getString("content"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bean;
+	}
+
 }
 
 

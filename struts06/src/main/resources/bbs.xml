@@ -16,9 +16,32 @@
     			<interceptor-ref name="prepare"/>
     			<interceptor-ref name="modelDriven"/>
     			<interceptor-ref name="params"/>
-    			<result type="redirectAction">list</result>
+    			<interceptor-ref name="validation"/>
+    			<result name="input">/add.jsp</result>
+    			<result name="success" type="redirectAction">list</result>
+    		</action>
+    		<action name="detail" class="com.bit.struts.action.DetailAction">
+    			<result name="success">/detail.jsp</result>
     		</action>
     	</package>
     	
     
     </struts>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

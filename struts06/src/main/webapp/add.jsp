@@ -26,11 +26,11 @@
 
 <form action="insert.bit">
   <div class="form-group">
-    <label for="sub">제목</label>
+    <label for="sub">제목</label>${FieldErrors.sub }
     <input type="text" class="form-control" name="sub" id="sub" placeholder="제목을 입력">
   </div>
   <div class="form-group">
-    <label for="name">글쓴이</label>
+    <label for="name">글쓴이</label>${FieldErrors.name }
     <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력">
   </div>
   <div class="form-group">
