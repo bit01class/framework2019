@@ -7,5 +7,9 @@
 	<select id="selectAll" resultClass="com.bit.struts.model.entity.Struts06Vo">
 	SELECT NUM,NAME,SUB,NALJA FROM STRUTS06 ORDER BY NUM DESC
 	</select>
+	
+	<select id="selectOne" parameterClass="int" resultClass="com.bit.struts.model.entity.Struts06Vo">
+	select * from struts06 where num=#value#
+	</select>
 
 </sqlMap>

@@ -1,5 +1,6 @@
 package com.bit.struts.action;
 
+import com.bit.struts.model.IbatisDao;
 import com.bit.struts.model.Struts06Dao;
 import com.bit.struts.model.entity.Struts06Vo;
 import com.opensymphony.xwork2.Action;
@@ -18,7 +19,7 @@ public class DetailAction implements Action,ModelDriven<Struts06Vo> {
 
 	@Override
 	public String execute() throws Exception {
-		Struts06Dao dao=new Struts06Dao();
+		IbatisDao dao=new IbatisDao();
 		bean=dao.listOne(bean.getNum());
 		return this.SUCCESS;
 	}

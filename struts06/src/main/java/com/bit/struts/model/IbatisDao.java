@@ -30,6 +30,10 @@ public class IbatisDao {
 	public List<Struts06Vo> getList() throws SQLException {
 		return sqlMapClient.queryForList("selectAll");
 	}
+
+	public Struts06Vo listOne(int num) throws SQLException {
+		return (Struts06Vo) sqlMapClient.queryForObject("selectOne",num);
+	}
 }
 
 
