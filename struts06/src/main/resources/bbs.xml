@@ -9,6 +9,15 @@
     		<action name="list" class="com.bit.struts.action.ListAction">
     			<result>/list.jsp</result>
     		</action>
+    		<action name="add" class="com.bit.struts.action.AddAction">
+    			<result>/add.jsp</result>
+    		</action>
+    		<action name="insert" class="com.bit.struts.action.InsertAction">
+    			<interceptor-ref name="prepare"/>
+    			<interceptor-ref name="modelDriven"/>
+    			<interceptor-ref name="params"/>
+    			<result type="redirectAction">list</result>
+    		</action>
     	</package>
     	
     

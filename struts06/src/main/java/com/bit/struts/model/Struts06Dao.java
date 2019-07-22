@@ -55,6 +55,27 @@ public class Struts06Dao {
 		return list;
 	}
 
+	public void insertOne(Struts06Vo bean) {
+		String sql="INSERT INTO STRUTS06 VALUES (STRUTS06_SEQ.NEXTVAL,?,?,?,SYSDATE)";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getName());
+			pstmt.setString(2, bean.getSub());
+			pstmt.setString(3, bean.getContent());
+			int result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
 }
 
 
