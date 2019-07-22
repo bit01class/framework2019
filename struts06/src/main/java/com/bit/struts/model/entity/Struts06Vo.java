@@ -11,6 +11,13 @@ public class Struts06Vo {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Struts06Vo(int num, String name, String sub, Date nalja) {
+		this.num=num;
+		this.name=name;
+		this.sub=sub;
+		this.nalja=nalja;
+	}
+
 	public int getNum() {
 		return num;
 	}

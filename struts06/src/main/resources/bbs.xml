@@ -5,12 +5,11 @@
 
     <struts>
     
-    	<package name="base" extends="struts-default">
-    		<action name="index" class="com.bit.struts.action.IndexAction">
-    			<result>/index.jsp</result>
+    	<package name="bbs" namespace="/bbs" extends="base">
+    		<action name="list" class="com.bit.struts.action.ListAction">
+    			<result>/list.jsp</result>
     		</action>
     	</package>
     	
-    	<include file="bbs.xml"></include>
     
     </struts>
