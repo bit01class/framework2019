@@ -1,4 +1,4 @@
-package com.bit.model.entity;
+package com.bit.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.bit.framework.TemplateQuery;
 import com.bit.framework.TemplateUpdate;
+import com.bit.model.entity.Bbs02Vo;
 
 public class Bbs02Dao1 {
 	
@@ -17,12 +18,13 @@ public class Bbs02Dao1 {
 			bean.setName(rs.getString("name"));
 			bean.setSub(rs.getString("sub"));
 			bean.setNalja(rs.getDate("nalja"));
+			bean.setContent(rs.getString("content"));
 			return bean;
 		}
 	};
 	
 	public List getList() throws SQLException{
-		String sql="select num,name,sub,nalja from bbs02";
+		String sql="select num,name,sub,nalja,content from bbs02";
 		return template.executeQuery(sql,new Object[]{});
 	}
 
