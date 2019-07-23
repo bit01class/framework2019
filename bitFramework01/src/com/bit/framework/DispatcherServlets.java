@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bit.controller.AddController;
 import com.bit.controller.IndexController;
 import com.bit.controller.ListController;
 import com.bit.controller.MainController;
@@ -41,6 +42,10 @@ public class DispatcherServlets extends HttpServlet{
 			controller = new MainController();
 		}else if(path.equals("/list.bit")){
 			controller = new ListController();
+		}else if(path.equals("/add.bit")){
+			controller = new AddController();
+		}else if(path.equals("/insert.bit")){
+			controller = new com.bit.controller.InsertController();
 		}
 		
 		String viewName=null;
@@ -50,9 +55,17 @@ public class DispatcherServlets extends HttpServlet{
 			e.printStackTrace();
 		}
 		
+		// viewResolver
 		
-		viewName="/WEB-INF/view/"+viewName+".jsp";
+		if(viewName.startsWith("redirect:")){
+			resp.sendRedirect(root+viewName.substring("redirect:".length()));
+		}else{
+		String prefix="/WEB-INF/view/";
+		String suffix=".jsp";
+		
+		viewName=prefix+viewName+suffix;
 		req.getRequestDispatcher(viewName).forward(req, resp);
+		}
 	}
 	
 }

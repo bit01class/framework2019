@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>main page</h1>
+	<a href="list.bit">go bbs</a>
 </body>
 </html>

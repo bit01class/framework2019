@@ -25,6 +25,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="add.bit">글쓰기</a>
 </body>
 </html>
 

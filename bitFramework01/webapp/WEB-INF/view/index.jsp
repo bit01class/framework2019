@@ -9,5 +9,6 @@
 <body>
 	<h1>index page</h1>
 	<p>${msg }</p>
+	<a href="main.bit">go Main</a>
 </body>
 </html>
