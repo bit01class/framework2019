@@ -1,6 +1,7 @@
 package com.bit.framework;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +43,12 @@ public class DispatcherServlets extends HttpServlet{
 			controller = new ListController();
 		}
 		
-		String viewName=controller.execute(req);
+		String viewName=null;
+		try {
+			viewName = controller.execute(req);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 		viewName="/WEB-INF/view/"+viewName+".jsp";
