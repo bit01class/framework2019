@@ -73,6 +73,32 @@ public class Bbs02Dao1 {
 			if(conn!=null)conn.close();
 		}
 	}
+
+	public Bbs02Vo selectOne(int num) throws SQLException {
+		String sql="select * from bbs02 where num=?";
+		Connection conn=getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				Bbs02Vo bean=new Bbs02Vo();
+				bean.setNum(rs.getInt("num"));
+				bean.setName(rs.getString("name"));
+				bean.setSub(rs.getString("sub"));
+				bean.setContent(rs.getString("content"));
+				bean.setNalja(rs.getDate("nalja"));
+				return bean;
+			}
+		}finally{
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return null;
+	}
 }
 
 

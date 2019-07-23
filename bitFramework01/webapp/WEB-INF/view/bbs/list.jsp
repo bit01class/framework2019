@@ -18,10 +18,10 @@
 		</tr>
 		<c:forEach items="${alist }" var="bean">
 			<tr>
-				<td>${bean.num }</td>
-				<td>${bean.sub }</td>
-				<td>${bean.name }</td>
-				<td>${bean.nalja }</td>
+				<td><a href="detail.bit?idx=${bean.num }">${bean.num }</a></td>
+				<td><a href="detail.bit?idx=${bean.num }">${bean.sub }</a></td>
+				<td><a href="detail.bit?idx=${bean.num }">${bean.name }</a></td>
+				<td><a href="detail.bit?idx=${bean.num }">${bean.nalja }</a></td>
 			</tr>
 		</c:forEach>
 	</table>
