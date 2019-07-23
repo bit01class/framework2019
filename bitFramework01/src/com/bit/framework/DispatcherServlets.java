@@ -3,7 +3,9 @@ package com.bit.framework;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,15 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DispatcherServlets extends HttpServlet{
-	Map<String,String> map=new HashMap<String,String>();
 	
 	@Override
 	public void init() throws ServletException {
+		Map<String,String> map=new HashMap<String,String>();
 		map.put("/index.bit", "com.bit.controller.IndexController");
 		map.put("/main.bit", "com.bit.controller.MainController");
 		map.put("/list.bit", "com.bit.controller.ListController");
 		map.put("/add.bit", "com.bit.controller.AddController");
 		map.put("/insert.bit", "com.bit.controller.InsertController");
+
+		Set<String> keys = map.keySet();
+		Iterator<String> ite = keys.iterator();
+		while(ite.hasNext()){
+			String key = ite.next();
+			String clInfo=map.get(key);
+			BitHandlerMapping.setMap(key, clInfo);
+		}
+		
 	}
 
 	@Override
@@ -44,20 +55,8 @@ public class DispatcherServlets extends HttpServlet{
 		// handleMapping
 		
 		Controller controller =null;
-		String clInfo=null;
 		
-		clInfo=map.get(path);
-		
-		try {
-			Class clazz = Class.forName(clInfo);
-			controller=(Controller) clazz.newInstance();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		controller=BitHandlerMapping.getController(path);
 		
 		String viewName=null;
 		try {
@@ -67,15 +66,14 @@ public class DispatcherServlets extends HttpServlet{
 		}
 		
 		// viewResolver
+		String prefix="/WEB-INF/view/";
+		String suffix=".jsp";
 		
 		if(viewName.startsWith("redirect:")){
 			resp.sendRedirect(root+viewName.substring("redirect:".length()));
 		}else{
-		String prefix="/WEB-INF/view/";
-		String suffix=".jsp";
-		
-		viewName=prefix+viewName+suffix;
-		req.getRequestDispatcher(viewName).forward(req, resp);
+			viewName=prefix+viewName+suffix;
+			req.getRequestDispatcher(viewName).forward(req, resp);
 		}
 	}
 	
